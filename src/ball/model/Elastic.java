@@ -2,7 +2,8 @@ package ball.model;
 
 import ball.Ball;
 
-public class ElasticBall extends BallImpl {
+public class Elastic implements Behavior {
+
     public static final int GROWTH_RATE = 2;
 
     static final int GROW = 1;
@@ -10,13 +11,12 @@ public class ElasticBall extends BallImpl {
 
     private int growthDirection;
 
-    ElasticBall(int x, int y, int radius, int growthDirection) {
-        super(x, y, radius);
+    Elastic(int growthDirection) {
         this.growthDirection = growthDirection;
     }
 
     @Override
-    public void update() {
+    public void update(int x, int y, int radius) {
         growthDirection = reverseGrowthDirectionIfNecessary();
         radius = next();
     }

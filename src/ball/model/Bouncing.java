@@ -2,7 +2,8 @@ package ball.model;
 
 import ball.ui.BallWorld;
 
-public class BouncingBall extends BallImpl {
+public class Bouncing implements Behavior {
+
     public static final int MOVEMENT_SPEED = 12;
 
     static final int DOWN = 1;
@@ -10,13 +11,12 @@ public class BouncingBall extends BallImpl {
 
     private int direction;
 
-    BouncingBall(int x, int y, int direction) {
-        super(x, y);
+    Bouncing(int direction) {
         this.direction = direction;
     }
 
     @Override
-    public void update() {
+    public void update(int x, int y, int radius) {
         direction = reverseDirectionIfNecessary();
         y = move();
     }
